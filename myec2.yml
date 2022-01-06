@@ -1,0 +1,15 @@
+---
+ - hosts: localhost
+   connection: local
+   tasks:
+        - name: Create ec2 instance
+          ec2:
+             key_name: "{{ KEY_NAME }}"
+             instance_type: "{{ INSTANCE_TYPE }}"
+             image: "{{ IMAGE }}"
+             wait: yes
+             group: "{{ SG_GROUP }}"
+             count: "{{ COUNT }}"
+             region: "{{ REGION }}"
+             instance_tags:
+                        Name: "{{ TAG }}"
